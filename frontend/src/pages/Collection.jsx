@@ -10,11 +10,59 @@ const Collection = () => {
 const [showFilter, setShowFilter] = React.useState(true);
 const [filteredProducts, setFilteredProducts] = React.useState([]);
 
+const[category, setCategory] = React.useState([]);
+const [subCategory, setSubCategory] = React.useState([]);
 
+
+const toggleCategory = (e) =>{
+
+  if(category.includes(e.target.value))
+  {
+
+    setCategory(prev=> prev.filter(item=> item !== e.target.value)) //This line removes an item from the array if it already exists.
+  }
+  else{
+
+    setCategory(prev => [...prev, e.target.value]) //"Take the old list, keep everything in it, and add this new clicked value at the end."
+  }
+
+}
+
+const toggleSubCategory = (e) =>{
+
+  if(subCategory.includes(e.target.value))
+  {
+
+    setSubCategory(prev=> prev.filter(item=> item !== e.target.value)) //This line removes an item from the array if it already exists.
+  }
+  else{
+
+    setSubCategory(prev => [...prev, e.target.value]) //"Take the old list, keep everything in it, and add this new clicked value at the end."  
+  }
+}
+
+// const toggleCategory = (e) => { ... }
+// This is a function that will be called when a user clicks a checkbox or button.
+// e is the event object, giving you info about what was clicked
+
+// category.includes(e.target.value)
+// Checks if the clicked category value (e.g., 'Men') is already selected.
+// category is an array of selected categories in state.
+
+// prev → this is the current state array of categories before the update.
 
 useEffect(() => {
   setFilteredProducts(products);
 }, [])
+
+
+useEffect(() => {
+  console.log(subCategory)
+},[subCategory]); //to check if checckbox is working or not
+
+// useEffect(() => {
+//   console.log(category)
+// },[category]); //to check if checckbox is working or not
 
   return (
      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
@@ -28,13 +76,13 @@ useEffect(() => {
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Men'} /> Men
+              <input className="w-3" type="checkbox" value={'Men'}   onChange={toggleCategory}/> Men
             </p>
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Women'}  /> Women
+              <input className="w-3" type="checkbox" value={'Women' } onChange={toggleCategory}  /> Women
             </p>
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Kids'} /> Kids
+              <input className="w-3" type="checkbox" value={'Kids' } onChange={toggleCategory} /> Kids
             </p>
           </div>
         </div>
@@ -44,13 +92,13 @@ useEffect(() => {
           <p className="mb-3 text-sm font-medium">TYPES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Top Wear'} /> Top Wear
+              <input className="w-3" type="checkbox" value={'Top Wear'} onChange={toggleSubCategory}/> Top Wear
             </p>
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Bottom Wear'}  /> Bottom Wear
+              <input className="w-3" type="checkbox" value={'Bottom Wear'}  onChange={toggleSubCategory}/> Bottom Wear
             </p>
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Winter wear'} /> Winter wear
+              <input className="w-3" type="checkbox" value={'Winter wear'} onChange={toggleSubCategory}/> Winter wear
             </p>
           </div>
         </div>
