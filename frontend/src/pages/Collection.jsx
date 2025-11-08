@@ -6,7 +6,7 @@ import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
 
-  const {products} = React.useContext(ShopContext) //import all the porducts
+  const {products,search,ShowSearch} = React.useContext(ShopContext) //import all the porducts
 const [showFilter, setShowFilter] = React.useState(true);
 const [filteredProducts, setFilteredProducts] = React.useState([]);
 
