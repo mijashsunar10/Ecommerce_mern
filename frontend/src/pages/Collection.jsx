@@ -62,6 +62,10 @@ const applyFilter = () =>{
     // For each item, it checks if its category exists inside the category array (your selected filters).
   }
 
+  if(subCategory.length > 0){
+      productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory));
+    }
+
   setFilteredProducts(productsCopy);
 }
 
@@ -113,13 +117,13 @@ useEffect(() => {
           <p className="mb-3 text-sm font-medium">TYPES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Top Wear'} onChange={toggleSubCategory}/> Top Wear
+              <input className="w-3" type="checkbox" value={'Topwear'} onChange={toggleSubCategory}/> Top Wear
             </p>
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Bottom Wear'}  onChange={toggleSubCategory}/> Bottom Wear
+              <input className="w-3" type="checkbox" value={'Bottomwear'}  onChange={toggleSubCategory}/> Bottom Wear
             </p>
             <p className="flex gap-2">
-              <input className="w-3" type="checkbox" value={'Winter wear'} onChange={toggleSubCategory}/> Winter wear
+              <input className="w-3" type="checkbox" value={'Winterwear'} onChange={toggleSubCategory}/> Winter wear
             </p>
           </div>
         </div>
