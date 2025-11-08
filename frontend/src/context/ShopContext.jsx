@@ -20,7 +20,7 @@ const ShopContextProvider = (props)=>{
 
     const [search,setSearch] = React.useState(''); // State to hold the search query entered by the user
 
-    const [ShowSearch,setShowSearch] = React.useState(true); // State to control visibility of the search bar
+    const [ShowSearch,setShowSearch] = React.useState(false); // State to control visibility of the search bar
 
 
 
