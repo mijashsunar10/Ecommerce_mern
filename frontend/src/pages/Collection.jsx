@@ -69,9 +69,9 @@ const applyFilter = () =>{
   setFilteredProducts(productsCopy);
 }
 
-useEffect(() => {
-  setFilteredProducts(products);
-}, [])
+// useEffect(() => {
+//   setFilteredProducts(products);
+// }, []) yo need vayena kina vnda filter porduct le nai yeti kunai filet xaina vane all view garni vanexa
 
 useEffect(() => {
   applyFilter();
