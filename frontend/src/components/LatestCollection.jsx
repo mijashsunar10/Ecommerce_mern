@@ -54,7 +54,7 @@ const LatestCollection = () => {
 
         {/*Rendering Products form the ProductItem  */}
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg-grid-cols-5 dap-4 gap-y-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
           {
               // Looping through latestProducts array and showing each item
 //               .map() loops through the latestProducts array.
