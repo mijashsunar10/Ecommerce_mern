@@ -1,5 +1,5 @@
 // // Importing 'createContext' function from React to create a global contex
-import { createContext } from "react";
+import React, { createContext } from "react";
 
 import { products } from "../assets/frontend_assets/assets";
 
@@ -18,9 +18,15 @@ const ShopContextProvider = (props)=>{
 
     const delivery_fee = 10;
 
+    const [search,setSearch] = React.useState(''); // State to hold the search query entered by the user
+
+    const [ShowSearch,setShowSearch] = React.useState(true); // State to control visibility of the search bar
+
+
+
     const value =
     {
-        products,currency,delivery_fee
+        products,currency,delivery_fee,search,setSearch,ShowSearch,setShowSearch
 
     } //When we add varibale or fucntions in value object, they will be accessible in whole app or other compoennt using COntect api
 
