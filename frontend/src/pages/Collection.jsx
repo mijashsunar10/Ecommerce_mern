@@ -57,6 +57,10 @@ const applyFilter = () =>{
   let productsCopy = products.slice(); // Create a copy of the products array to avoid mutating the original data.
   // We use this so we don’t accidentally modify the original products array directly.
 
+  if(ShowSearch && search)
+  {
+    productsCopy = productsCopy.filter(item=>item.name.toLowerCase().includes(search.toLowerCase()))
+  }
   // Filter by Category
   if(category.length > 0){ //checks if category filete is slected if no category selcted all is shown
     productsCopy = productsCopy.filter(item => category.includes(item.category));
@@ -98,7 +102,7 @@ const applyFilter = () =>{
 
 useEffect(() => {
   applyFilter();
-}, [category, subCategory]);
+}, [category, subCategory,search,ShowSearch]);
 // It means: “Whenever category or subCategory changes, run applyFilter() again.”
 
 
