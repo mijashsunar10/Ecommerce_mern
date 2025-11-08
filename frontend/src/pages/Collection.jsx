@@ -51,18 +51,39 @@ const toggleSubCategory = (e) =>{
 
 // prev → this is the current state array of categories before the update.
 
+const applyFilter = () =>{
+  let productsCopy = products.slice(); // Create a copy of the products array to avoid mutating the original data.
+  // We use this so we don’t accidentally modify the original products array directly.
+
+  // Filter by Category
+  if(category.length > 0){ //checks if category filete is slected if no category selcted all is shown
+    productsCopy = productsCopy.filter(item => category.includes(item.category));
+    // productsCopy.filter(...) loops through each product.
+    // For each item, it checks if its category exists inside the category array (your selected filters).
+  }
+
+  setFilteredProducts(productsCopy);
+}
+
 useEffect(() => {
   setFilteredProducts(products);
 }, [])
 
-
 useEffect(() => {
-  console.log(subCategory)
-},[subCategory]); //to check if checckbox is working or not
+  applyFilter();
+}, [category, subCategory]);
+// It means: “Whenever category or subCategory changes, run applyFilter() again.”
+
+
+// useEffect(() => {
+//   console.log(subCategory)
+// },[subCategory]); //to check if checckbox is working or not
 
 // useEffect(() => {
 //   console.log(category)
 // },[category]); //to check if checckbox is working or not
+
+
 
   return (
      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
