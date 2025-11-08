@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { use, useEffect } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/frontend_assets/assets';
 import Title from '../components/Title';
@@ -12,6 +12,8 @@ const [filteredProducts, setFilteredProducts] = React.useState([]);
 
 const[category, setCategory] = React.useState([]);
 const [subCategory, setSubCategory] = React.useState([]);
+
+const [sortType, setSortType] = React.useState('relevant');
 
 
 const toggleCategory = (e) =>{
@@ -69,6 +71,27 @@ const applyFilter = () =>{
   setFilteredProducts(productsCopy);
 }
 
+  const sortProduct = () =>
+  {
+    let fpCopy = filteredProducts.slice();
+
+    switch(sortType){
+      case 'low-high':
+        setFilteredProducts(fpCopy.sort((a,b)=> a.price - b.price));
+        break;
+    //         fpCopy.sort(...)	Sorts the array in-place
+    // (a, b) => a.price - b.price	Compare two products by their price
+    // setFilteredProducts(...)	Update React state with sorted products
+      case 'high-low':
+        setFilteredProducts(fpCopy.sort((a,b)=> b.price - a.price));
+        break;
+      default:
+        applyFilter();
+        break;
+
+    }
+  }
+
 // useEffect(() => {
 //   setFilteredProducts(products);
 // }, []) yo need vayena kina vnda filter porduct le nai yeti kunai filet xaina vane all view garni vanexa
@@ -87,7 +110,9 @@ useEffect(() => {
 //   console.log(category)
 // },[category]); //to check if checckbox is working or not
 
-
+useEffect(() => {
+  sortProduct();
+}, [sortType]);
 
   return (
      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
@@ -136,7 +161,7 @@ useEffect(() => {
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
 
           {/* Product Sort */}
-          <select className="border border-gray-300 px-3 py-1 text-sm sm:text-base">
+          <select onChange={(e)=>setSortType(e.target.value)} className="border border-gray-300 px-3 py-1 text-sm sm:text-base">
             <option value="relevant">Sort By:Relevant </option>
              <option value="low-high">Sort By:Low to High </option>
               <option value="high-low">Sort By:High to Low </option>
