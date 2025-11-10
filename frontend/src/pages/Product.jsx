@@ -81,7 +81,16 @@ const Product = () => {
 
 
           </div>
-          
+
+          <button className='bg-black text-white px-8 py-3 active:bg-gray-700'>ADD TO CART</button>
+          <hr className='mt-8 sm:w-4/5'/>
+          <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1' >
+
+            <p>100% Original Product</p>
+            <p>Cash on Delivery is Available in this product</p>
+            <p>Easy return and exchange policy within 7 days</p>
+
+          </div>
 
 
         </div>
@@ -89,6 +98,27 @@ const Product = () => {
 
 
       </div>
+
+      {/* Description and Review Section */}
+
+      <div className='mt-20'>
+
+        <div className="flex">
+          <b className='border  border-gray-300 px-5 py-3 text-sm'>Descritpion</b>
+          <p className='border border-gray-300  px-5 py-3 text-sm'>Reviews(122)</p>
+        </div>
+
+        <div className='flex flex-col gap-4 border border-gray-300  px-6 py-6 text-sm text-gray-600'>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis veniam dolorem iusto? Ipsam architecto, repudiandae quod placeat culpa quia distinctio.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sapiente, ad facere inventore porro vero quaerat harum. Non, voluptatem rerum!</p>
+
+        </div>
+
+      </div>
+
+      {/* Disply related products */}
+
+      
       
     </div>
   ) : <div className='opacity-0'>
